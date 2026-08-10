@@ -1,32 +1,30 @@
 # MEMS Silicon Photonic Switch — Layout Design in gdsfactory + KLayout
 
-A code-driven physical layout of a large-scale MEMS-actuated silicon photonic
-switch: unit cell → 50×50 crossbar array → electrical addressing → chip-level
-finishing → 3D visualization. Built end-to-end in Python (gdsfactory) with
-KLayout as the mask viewer.
+This was my attempt at making a MEMS-actuated directional coupler optical photonic switch. This project includes processes such as a cantilever, a movable coupler, and a waveguide crossing.
+The switch itself was created following the hierarchy: unit cell → 50×50 crossbar array → electrical addressing → chip-level
+finishing → 3D visualization. All of this work was developed in Python (gdsfactory) with KLayout as the mask viewer.
 
-**Scope note:** this project is a **layout and tooling exercise**, not a
-device performance study. The goal was to get fluent with process-aware
-photonic/MEMS mask design — layer stacks, parametric cells, DRC-style
-sanity checks, array assembly, and 3D visualization — using a real published
+**Author's note:** this project is a **layout and tooling exercise**, not a
+device performance study. The goal here was to test my fluency with process-aware
+photonic/MEMS mask design, and 3D visualization — using a real published
 device as a realistic reference geometry, not to re-derive or validate its
 optical/mechanical performance.
 
 ## Reference
 
-Geometry, process flow, and key dimensions are based on:
+Geometry, process flow, and key dimensions are based on the following work:
 
 > S. Han, *"Large-Scale Silicon Photonic MEMS Switch,"* M.S. thesis,
 > UC Berkeley, EECS-2015-42 (advisor: Ming C. Wu).
 
-It describes a 3-mask SOI process (shallow etch, deep etch, metal liftoff)
+This material describes a 3-mask SOI process (shallow etch, deep etch, metal liftoff)
 for a cantilever-actuated directional-coupler switch, tested at unit-cell
 scale with manual probing — no on-chip electrical addressing or packaging
 was implemented in the original work. Everything past the unit cell
 (50×50 array, electrical addressing, chip finishing) is this project's own
 extension.
 
-## Two deliberate deviations from the reference, and why
+## Two deliberate deviations I made from the reference, and why
 
 | Deviation | Why |
 |---|---|
@@ -55,13 +53,12 @@ column reaches full pull-in voltage:
 **Worked example**, using the thesis's own reported pull-in range (~14–24 V,
 Sec. 3.C): at an operating point of V<sub>π</sub> = 20 V, the half-select
 voltage is 10 V — a 4 V margin below the *lower bound* of the reported
-range, so half-selected cells stay safely below actuation even accounting
-for device-to-device variation.
+range, so half-selected cells stay below actuation.
 
-## Optical I/O: grating coupler parameters
+## Optical I/O: grating coupler parameters I used
 
-Grating period is derived from the first-order grating equation rather than
-picked arbitrarily:
+The grating period was derived from the first-order grating equation rather than
+picked at random:
 
 Λ = m·λ₀ / (n_eff − n_clad·sinθ)
 
@@ -75,14 +72,14 @@ picked arbitrarily:
 | Duty cycle | 50% | Standard starting point |
 | Etch depth | 70 nm | Reuses the same shallow-etch mask already in the process (Sec 3.A) |
 
-Consistent with published shallow-etched grating couplers on this platform —
+Consistent with published shallow-etched grating couplers on this platform, 
 not re-derived from a mode simulation of this specific waveguide (n_eff
-is a literature value, not solved for here). No apodization/reflection
+is a literature value, not solved for here). Moreover, no apodization/reflection
 optimization was done.
 
 ## File architecture
 
-Built in this order; each file imports only from files above it.
+Built in this order; so that each file imports only from files above it.
 
 | File | Purpose |
 |---|---|
@@ -105,21 +102,22 @@ python ChipFinishing_MS.py   # complete chip
 python Render3D_MS.py        # 3D render (needs pyglet<2; see script header)
 ```
 
-Each script writes GDS to an `output/` folder next to it. For live viewing in
-KLayout: install the **klive** package (KLayout → Tools → Manage Packages →
-search "klive"), keep KLayout open, and each script will auto-display its
-result there.
+Each script writes GDS to an `output/` folder next to it. 
 
-## Known simplifications
+## Known simplifications I implemented for "getting the design done"
 
 - Dimensions are placeholders sized to fit, not DRC-derived from a real
   foundry rule deck.
-- Waveguides are simple full-etch strips — the shallow-etch (rib/slab) mask
-  exists in the layer map but isn't used in any waveguide geometry.
+- Waveguides are simple full-etch strips (the shallow-etch (rib/slab) mask
+  exists in the layer map but isn't used in any waveguide geometry).
 - No insulator/via mask is modeled between the two metal layers — they're
-  drawn as directly overlapping where a contact is intended.
-- The addressing scheme above is a design description, not simulated drive
+  drawn as directly overlapping where a contact is needed.
+- Again, the addressing scheme above is a design description, not simulated drive
   electronics.
-- 3D renders use a visualization-only z-exaggeration (the real actuation
-  deflection is 1 µm — invisible at this device's lateral scale); the
-  underlying `LayerStack_ms.py` itself is never altered.
+- Since 3D renders use a visualization-only z-exaggeration (the real actuation
+  deflection is 1 µm (invisible at this device's lateral scale); the
+  underlying `LayerStack_ms.py` itself is never altered).
+
+  I will update this whenever I get the chance to run a few simulations on COMSOL.
+
+  Done, dude.
