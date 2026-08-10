@@ -4,6 +4,11 @@ This was my attempt at making a MEMS-actuated directional coupler optical photon
 The switch itself was created following the hierarchy: unit cell → 50×50 crossbar array → electrical addressing → chip-level
 finishing → 3D visualization. All of this work was developed in Python (gdsfactory) with KLayout as the mask viewer.
 
+<img width="1586" height="852" alt="SwitchUnitCell" src="https://github.com/user-attachments/assets/fe5281c9-9fed-4303-ab65-ab5e1c6fad15" /> 
+
+<img width="1400" height="1000" alt="unit_cell_3d_through" src="https://github.com/user-attachments/assets/ba9f60b2-5afe-4d98-8c36-7ce7796decc4" />
+
+
 **Author's note:** this project is a **layout and tooling exercise**, not a
 device performance study. The goal here was to test my fluency with process-aware
 photonic/MEMS mask design, and 3D visualization — using a real published
