@@ -1,4 +1,4 @@
-# MEMS Silicon Photonic Switch — Layout Design in gdsfactory + KLayout
+# MEMS Silicon Photonic Switch: A Layout Design in gdsfactory + KLayout
 
 This was my attempt at making a MEMS-actuated directional coupler optical photonic switch. This project includes processes such as a cantilever, a movable coupler, and a waveguide crossing.
 The switch itself was created following the hierarchy: unit cell → 50×50 crossbar array → electrical addressing → chip-level
