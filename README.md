@@ -4,10 +4,12 @@ This was my attempt at making a MEMS-actuated directional coupler optical photon
 The switch itself was created following the hierarchy: unit cell → 50×50 crossbar array → electrical addressing → chip-level
 finishing → 3D visualization. All of this work was developed in Python (gdsfactory) with KLayout as the mask viewer.
 
-<img width="1000" height="552" alt="SwitchUnitCell" src="https://github.com/user-attachments/assets/fe5281c9-9fed-4303-ab65-ab5e1c6fad15" /> 
+<img width="654" height="323" alt="SwitchUnitCell" src="https://github.com/user-attachments/assets/fe5281c9-9fed-4303-ab65-ab5e1c6fad15" /> 
 
-<img width="1000" height="600" alt="unit_cell_3d_through" src="https://github.com/user-attachments/assets/ba9f60b2-5afe-4d98-8c36-7ce7796decc4" />
-<img width="1000" height="620" alt="unit_cell_3d_drop" src="https://github.com/user-attachments/assets/dc2d7ec9-973b-478f-a1b3-9e185244514f" />
+<img width="654" height="300" alt="unit_cell_3d_through" src="https://github.com/user-attachments/assets/ba9f60b2-5afe-4d98-8c36-7ce7796decc4" />
+
+<img width="1000" height="765" alt="FineshedChip_view1" src="https://github.com/user-attachments/assets/e753ddb9-3008-483e-8158-d1bbb82e8bd2" />
+
 
 
 **Author's note:** this project is a **layout and tooling exercise**, not a
