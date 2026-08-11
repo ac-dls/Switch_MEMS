@@ -8,7 +8,7 @@ finishing → 3D visualization. All of this work was developed in Python (gdsfac
 
 <img width="654" height="300" alt="unit_cell_3d_through" src="https://github.com/user-attachments/assets/ba9f60b2-5afe-4d98-8c36-7ce7796decc4" />
 
-<img width="850" height="422" alt="FineshedChip_view1" src="https://github.com/user-attachments/assets/bbef9d7f-2563-423c-b56c-3646c3869135" />
+<img width="650" height="422" alt="FineshedChip_view1" src="https://github.com/user-attachments/assets/bbef9d7f-2563-423c-b56c-3646c3869135" />
 
 
 **Author's note:** this project is a **layout and tooling exercise**, not a
